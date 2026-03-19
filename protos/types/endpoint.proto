@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package locator.types;
+
+option go_package = "github.com/hunkvm/locator/pkg/proto/types";
+
+message Endpoint {
+  string host = 1;
+  int32 port = 2;
+}

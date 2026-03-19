@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package locator.types;
+
+import "protos/types/endpoint.proto";
+import "protos/types/health.proto";
+
+option go_package = "github.com/hunkvm/locator/pkg/proto/types";
+
+message Service {
+  string id = 1;
+  string name = 2;
+  Endpoint address = 3;
+  HealthStatus health_status = 5;
+  HealthConfig health_check = 6;
+  bool enabled = 4;
+  map<string, string> metadata = 7;
+  string last_checked = 8;
+  string registered_at = 9;
+}
