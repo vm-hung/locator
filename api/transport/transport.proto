@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package locator;
+option go_package = "locator/api/transport";
+
+message SendMessageRequest {
+  bytes data = 1;
+}
+
+message SendMessageResponse {
+  bool success = 1;
+}
+
+service RaftTransportService {
+  rpc Send(SendMessageRequest) returns (SendMessageResponse);
+  rpc Stream(stream SendMessageRequest) returns (stream SendMessageResponse);
+}

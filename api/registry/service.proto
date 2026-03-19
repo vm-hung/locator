@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package locator;
+option go_package = "locator/api/registry";
+
+enum HealthStatus {
+  HEALTH_STATUS_UNSPECIFIED = 0;
+  HEALTH_STATUS_HEALTHY = 1;
+  HEALTH_STATUS_UNHEALTHY = 2;
+}
+
+message Endpoint {
+  string host = 1;
+  int32 port = 2;
+}
+
+message HealthConfig {
+  string service = 1;
+  Endpoint address = 2;
+}
+
+message Service {
+  string id = 1;
+  string name = 2;
+  Endpoint address = 3;
+  HealthStatus health_status = 5;
+  HealthConfig health_check = 6;
+  bool enabled = 4;
+  map<string, string> metadata = 7;
+  string last_checked = 8;
+  string registered_at = 9;
+}

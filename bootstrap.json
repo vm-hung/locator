@@ -1,0 +1,20 @@
+{
+    "xds_servers": [
+        {
+            "server_uri": "127.0.0.1:8881",
+            "channel_creds": [{ "type": "insecure" }]
+        },
+        {
+            "server_uri": "127.0.0.1:8882",
+            "channel_creds": [{ "type": "insecure" }]
+        },
+        {
+            "server_uri": "127.0.0.1:8883",
+            "channel_creds": [{ "type": "insecure" }]
+        }
+    ],
+    "node": {
+        "id": "hello-server",
+        "cluster": "southeast-asia"
+    }
+}
