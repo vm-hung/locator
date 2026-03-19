@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package locator.registry;
+
+import "protos/types/service.proto";
+import "protos/types/endpoint.proto";
+import "protos/types/health.proto";
+option go_package = "github.com/hunkvm/locator/pkg/proto/registry";
+
+message Selector {
+  string field = 1;
+  repeated string values = 2;
+}
+
+message RetrieveServiceRequest {
+  repeated Selector selectors = 1;
+}
+
+message RetrieveServiceResponse {
+  bool success = 1;
+  string message = 2;
+  repeated locator.types.Service services = 3;
+}
+
+message RegisterServiceRequest {
+  string name = 1;
+  locator.types.Endpoint address = 2;
+  locator.types.HealthConfig health_check = 3;
+  bool enabled = 4;
+  map<string, string> metadata = 5;
+}
+
+message RegisterServiceResponse {
+  string id = 1;
+  bool success = 2;
+  string message = 3;
+}
+
+message EnableServiceRequest {
+  repeated Selector selectors = 1;
+}
+
+message EnableServiceResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message DisableServiceRequest {
+  repeated Selector selectors = 1;
+}
+
+message DisableServiceResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message DeregisterServiceRequest {
+  string id = 1;
+}
+
+message DeregisterServiceResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+service ServiceRegistryService {
+  rpc Retrieve(RetrieveServiceRequest) returns (RetrieveServiceResponse);
+  rpc Register(RegisterServiceRequest) returns (RegisterServiceResponse);
+  rpc Enable(EnableServiceRequest) returns (EnableServiceResponse);
+  rpc Disable(DisableServiceRequest) returns (DisableServiceResponse);
+  rpc Deregister(DeregisterServiceRequest) returns (DeregisterServiceResponse);
+}

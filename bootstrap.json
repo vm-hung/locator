@@ -1,0 +1,31 @@
+{
+    "xds_servers": [
+        {
+            "server_uri": "127.0.0.1:8881",
+            "channel_creds": [{ "type": "insecure" }],
+            "server_features": ["xds_v3"]
+        },
+        {
+            "server_uri": "127.0.0.1:8882",
+            "channel_creds": [{ "type": "insecure" }],
+            "server_features": ["xds_v3"]
+        },
+        {
+            "server_uri": "127.0.0.1:8883",
+            "channel_creds": [{ "type": "insecure" }],
+            "server_features": ["xds_v3"]
+        }
+    ],
+    "node": {
+        "id": "hello-service-0a92ac0a",
+        "cluster": "hello-service",
+        "locality": {
+            "region": "local",
+            "zone": "default",
+            "sub_zone": "primary"
+        },
+        "metadata": {
+            "locator_namespace": "default"
+        }
+    }
+}

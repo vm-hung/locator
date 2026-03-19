@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package locator.transport;
+option go_package = "github.com/hunkvm/locator/pkg/proto/transport";
+
+message SendMessageRequest {
+  bytes data = 1;
+}
+
+message SendMessageResponse {
+  bool success = 1;
+}
+
+message StreamDataRequest {
+  bytes chunk = 1;
+}
+
+message StreamDataResponse {
+  bool success = 1;
+}
+
+service RaftTransportService {
+  rpc Send(SendMessageRequest) returns (SendMessageResponse);
+  rpc Stream(stream StreamDataRequest) returns (StreamDataResponse);
+}

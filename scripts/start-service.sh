@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Start hello service
+go run ./example/cmd/server --registry localhost:8881 \
+    --address localhost:8089 \
+    --name hello &
+
+# Start world service
+go run ./example/cmd/server --registry localhost:8881 \
+    --address localhost:8090 \
+    --name world &
+
+wait
