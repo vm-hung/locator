@@ -1,0 +1,13 @@
+**/data
+**/*.log
+.git
+.gitignore
+
+client
+example
+locactl
+scripts
+protos
+
+**/Dockerfile
+**/.dockerignore
